@@ -14,7 +14,7 @@ REQUIRED_PACKAGES = "vim git make wget jq podman sudo python3-pip"
 
 VM_NAME = "devscripts-ongo"
 VM_HOSTNAME = "devscripts-ongo"
-VM_IMAGE = "centos/stream8"
+VM_IMAGE = "generic/centos8"
 
 EXTRA_DISK = "/dev/vdb"
 EXTRA_DISK_PARTITION = "/dev/vdb1"
@@ -49,7 +49,7 @@ CMD_GIT_CONFIG_GLOBAL_USEREMAIL = "sudo -u " + DEVELOPER_USERNAME +
 ######################## START ######################
 Vagrant.configure(2) do |config|
   config.vm.box = VM_IMAGE
-  config.disksize.disk = VM_DISKSIZE
+  config.disksize.size = VM_DISKSIZE
 
   config.vm.provider 'libvirt' do |lv, config|
     lv.storage :file, :size => '110G', :type => 'qcow2'
