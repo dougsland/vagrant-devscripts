@@ -49,6 +49,7 @@ CMD_GIT_CONFIG_GLOBAL_USEREMAIL = "sudo -u " + DEVELOPER_USERNAME +
 ######################## START ######################
 Vagrant.configure(2) do |config|
   config.vm.box = VM_IMAGE
+  config.disksize.disk = VM_DISKSIZE
 
   config.vm.provider 'libvirt' do |lv, config|
     lv.storage :file, :size => '110G', :type => 'qcow2'
