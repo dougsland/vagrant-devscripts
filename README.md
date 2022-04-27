@@ -1,6 +1,11 @@
 # Welcome
 
-## Setting vagrant on Fedora
+**Requirements** for the host running the devscript project (vms):
+
+- 70GB of memory
+- 100GB of disk space
+
+## Setting vagrant on Fedora host
 Installing the basic on Fedora **host** to run the guests:
 
 ```
