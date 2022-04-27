@@ -1,7 +1,5 @@
 # Welcome
 
-
-
 ## Setting vagrant on Fedora
 Installing the basic on Fedora **host** to run the guests:
 
@@ -54,4 +52,11 @@ set -x
 **4.** Now you are ready to run [dev-scripts](https://github.com/openshift-metal3/dev-scripts) project.
 ```
 $ vagrant up
+$ vagrant ssh devscripts-ongo
+$ sudo su devel
+$ cd /home/devel/dev-scripts
+$ make all
 ```
+
+## Changing the default values for dev-scripts
+Feel free to edit and change the default values in ```vars_devscripts``` file. It will be added to **.bashrc** in the developer home.
