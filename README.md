@@ -1,3 +1,8 @@
+- [Welcome](#welcome)
+  * [Setting vagrant on Fedora host](#setting-vagrant-on-fedora-host)
+  * [Running the project](#running-the-project)
+  * [Changing the default values for dev-scripts](#changing-the-default-values-for-dev-scripts)
+
 # Welcome
 
 **Requirements** for the host running the devscript project (vms):
