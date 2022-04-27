@@ -64,4 +64,4 @@ $ make all
 ```
 
 ## Changing the default values for dev-scripts
-Feel free to edit and change the default values in ```vars_devscripts``` file. It will be added to **.bashrc** in the developer home.
+Feel free to edit and change the default values in [vars_devscripts](https://github.com/dougsland/vagrant-devscripts/blob/ca3e7cb29c2e453a340095882281480fe3cd35fe/vars_devscripts#L1) file. It will be added to **.bashrc** in the developer home.
