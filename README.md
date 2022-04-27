@@ -5,7 +5,13 @@
 
 # Welcome
 
-**Requirements** for the host running the [dev-scripts project](https://github.com/openshift-metal3/dev-scripts) (vms):
+This project creates a virtual machine with all requirements, settings and repos to build [dev-scripts project](https://github.com/openshift-metal3/dev-scripts) (vms).
+
+- Helps isolate your development environment
+- Easily adjustment requirements via `Vagrantfile`
+- Quick build environment via `vagrant up` command
+
+**Requirements for running the dev-scripts VMs**:
 
 - 70GB of memory
 - 100GB of disk space
