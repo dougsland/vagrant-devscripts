@@ -1,7 +1,7 @@
 ######################### DEV-SCRIPTS
-export WORKING_DIR=/source/wrk-dir-devscripts/
+export WORKING_DIR=/tmp/wrk-dir-devscripts/
 export IP_STACK=v4
-export KUBECONFIG=/source/dev-scripts/ocp/ostest/auth/kubeconfig
+export KUBECONFIG=/home/devel/dev-scripts/ocp/ostest/auth/kubeconfig
 
 export EXTRA_NETWORK_NAMES="nmstate1 nmstate2"
 export NMSTATE1_NETWORK_SUBNET_V4='192.168.221.0/24'
