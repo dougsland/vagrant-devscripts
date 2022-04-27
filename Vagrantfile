@@ -9,7 +9,7 @@ DEVELOPER_NAME = "Douglas Schilling Landgraf"
 DEVELOPER_EMAIL = "dougsland@redhat.com"
 
 DEVELOPER_USERNAME = "devel"
-DEVELOPER_PASSWORD = "superpass"
+DEVELOPER_PASSWORD = "vagrant"
 REQUIRED_PACKAGES = "vim git make wget jq podman sudo python3-pip" 
 
 VM_NAME = "devscripts-ongo"

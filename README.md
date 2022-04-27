@@ -67,6 +67,7 @@ $ sudo su devel
 $ cd /home/devel/dev-scripts
 $ make all
 ```
+NOTE: **devel user has password** (vagrant) [set here](https://github.com/dougsland/vagrant-devscripts/blob/3fd5750389a1e60300d3983f31cdff038822c6a9/Vagrantfile#L12) 
 
 ## Changing the default values for dev-scripts
 Feel free to edit and change the default values in [vars_devscripts](https://github.com/dougsland/vagrant-devscripts/blob/ca3e7cb29c2e453a340095882281480fe3cd35fe/vars_devscripts#L1) file. It will be added to **.bashrc** in the developer home.
