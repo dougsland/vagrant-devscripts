@@ -1,7 +1,7 @@
 # Welcome
 
 ## Fedora
-Installing the basic on Fedora:
+Installing the basic on Fedora **host** to run the guests:
 
 ```
 $ sudo dnf install @vagrant
