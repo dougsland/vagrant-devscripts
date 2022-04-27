@@ -1,5 +1,5 @@
 - [Welcome](#welcome)
-  * [Setting vagrant on Fedora host](#setting-vagrant-on-fedora-host)
+  * [HOST as Fedora to run vagrant](#host-as-fedora-to-run-vagrant)
   * [Running the project](#running-the-project)
   * [Changing the default values for dev-scripts](#changing-the-default-values-for-dev-scripts)
 
@@ -16,7 +16,7 @@ This project creates a virtual machine with all requirements, settings and repos
 - 70GB of memory
 - 100GB of disk space
 
-## Setting vagrant on Fedora host
+## HOST as Fedora to run vagrant
 Installing the basic on Fedora **host** to run the guests:
 
 ```
