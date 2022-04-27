@@ -47,7 +47,7 @@ and select `Copy login command`.
 
 - Copy the string which starts with **sha256**, example: *sha256~jtjonmsjN30REvkhkCEaldsakermcereori* and paste into **config_devel.sh**.
 
-Example:
+**Example**:
 ```
 # You can get this token from:  
 # https://console-openshift-console.apps.ci.l2s4.p1.openshiftapps.com/
