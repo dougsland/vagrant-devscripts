@@ -5,7 +5,7 @@
 
 # Welcome
 
-**Requirements** for the host running the devscript project (vms):
+**Requirements** for the host running the [dev-scripts project](https://github.com/openshift-metal3/dev-scripts) (vms):
 
 - 70GB of memory
 - 100GB of disk space
