@@ -37,8 +37,18 @@ $ git clone https://github.com/dougsland/vagrant-devscripts && cd vagrant-devscr
 - After logging into [console-openshift-console.apps.ci.l2s4.p1.openshiftapps.com](console-openshift-console.apps.ci.l2s4.p1.openshiftapps.com) go to your name on the top of right
 and select `Copy login command`.  
 
-Copy the string which starts with **sha256**, example: *sha256~jtjonmsjN30REvkhkCEaldsakermcereori* and paste into **config_devel.sh**.
+- Copy the string which starts with **sha256**, example: *sha256~jtjonmsjN30REvkhkCEaldsakermcereori* and paste into **config_devel.sh**.
 
+Example:
+```
+# You can get this token from https://console-openshift-console.apps.ci.l2s4.p1.openshiftapps.com/ by
+# clicking on your name in the top right corner and coping the login
+# command (the token is part of the command)
+set +x
+export CI_TOKEN='sha256-yuisdfgkjmnwqwert'
+set -x
+<snip>
+```
 
 **4.** Now you are ready to run [dev-scripts](https://github.com/openshift-metal3/dev-scripts) project.
 ```
