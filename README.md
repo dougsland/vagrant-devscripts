@@ -1,6 +1,6 @@
 # Welcome
 
-## Fedora
+## Setting vagrant on Fedora
 Installing the basic on Fedora **host** to run the guests:
 
 ```
