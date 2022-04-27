@@ -29,7 +29,6 @@ VM_CPU_MODE = "host-passthrough"
 VM_MEMORY = 95048
 VM_NESTED = true
 VM_KEYMAP = "pt"
-VM_DISKSIZE = "100GB"
 
 VM_SYNC_FOLDER = "/vagrant"
 
@@ -49,10 +48,8 @@ CMD_GIT_CONFIG_GLOBAL_USEREMAIL = "sudo -u " + DEVELOPER_USERNAME +
 ######################## START ######################
 Vagrant.configure(2) do |config|
   config.vm.box = VM_IMAGE
-  config.disksize.size = VM_DISKSIZE
 
   config.vm.provider 'libvirt' do |lv, config|
-    lv.storage :file, :size => '110G', :type => 'qcow2'
     lv.memory = VM_MEMORY
     lv.cpus = VM_CPUS
     lv.cpu_mode = VM_CPU_MODE
@@ -65,6 +62,12 @@ Vagrant.configure(2) do |config|
   # Set hostname and vm name
   config.vm.define VM_NAME
   config.vm.hostname = VM_HOSTNAME
+
+   config.vm.provision "shell", inline: <<-SHELL
+    parted /dev/vda resizepart 1 100%
+    pvresize /dev/vda2
+    lvresize -rl +100%FREE /dev/mapper/cl_centos8-root
+  SHELL
 
   # update the system 
   #config.vm.provision 'shell',
@@ -119,52 +122,15 @@ Vagrant.configure(2) do |config|
 		inline: 'sudo -u ' + DEVELOPER_USERNAME +
 			' git clone https://github.com/openshift/machine-config-operator ' + GO_SRC_DIR + '/machine-config-operator'
 
-  ############################ START - Creating the extra partition for devscripts
-  config.vm.provision 'shell',
-		inline: 'echo -e "o\nn\np\n1\n\n\nw" | fdisk ' + EXTRA_DISK
-
-  config.vm.provision 'shell',
-		inline: 'echo -e "y\n" | mkfs.ext4 ' + EXTRA_DISK_PARTITION
-
-  config.vm.provision 'shell',
-		inline: 'mkdir -p ' + EXTRA_DISK_PATH
-
-  config.vm.provision 'shell',
-		inline: 'mount -t ext4 ' + EXTRA_DISK_PARTITION + ' ' + EXTRA_DISK_PATH
-
-  config.vm.provision 'shell',
-		inline: 'chown -R ' + DEVELOPER_USERNAME + ':' + DEVELOPER_USERNAME + ' ' + EXTRA_DISK_PATH
-
-  config.vm.provision 'shell',
-		inline: 'chmod -R 0775 ' + EXTRA_DISK_PATH
-  ############################ END - Creating the extra partition for devscripts
-
   config.vm.provision 'shell',
 		inline: 'sudo -u ' + DEVELOPER_USERNAME +
-			' git clone https://github.com/openshift-metal3/dev-scripts ' + EXTRA_DISK_PATH + '/dev-scripts'
+			' git clone https://github.com/openshift-metal3/dev-scripts ' + GO_SRC_DIR + '/dev-scripts'
 
 
   # Deploying templates
   config.vm.provision "file", source: "config_devel.sh", destination: "/tmp/config_devel.sh"
   config.vm.provision "file", source: "vars_devscripts", destination: "/tmp/vars_devscripts"
   config.vm.provision "file", source: "pull_secret.json", destination: "/tmp/pull_secret.json"
-
-  # vm.provision shell has privileged permission
-  config.vm.provision "shell",
-      inline: "mv /tmp/config_devel.sh " + EXTRA_DISK_PATH + '/dev-scripts/config_devel.sh'
-
-  config.vm.provision "shell",
-      inline: "mv /tmp/vars_devscripts " + EXTRA_DISK_PATH + '/dev-scripts/vars_devscripts'
-
-  config.vm.provision "shell",
-      inline: "mv /tmp/pull_secret.json " + EXTRA_DISK_PATH + '/dev-scripts/pull_secret.json'
-
-  config.vm.provision 'shell',
-		inline: 'sudo -u ' + DEVELOPER_USERNAME +
-			' cat ' + EXTRA_DISK_PATH + '/dev-scripts/vars_devscripts >> /home/' + DEVELOPER_USERNAME + '/.bashrc'
-  # Deploying templates
-
-
 
   ############################ START - Symbol link projects to /home
   config.vm.provision 'shell',
@@ -177,8 +143,24 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision 'shell',
 		inline: 'sudo -u ' + DEVELOPER_USERNAME +
-			' ln -s ' + EXTRA_DISK_PATH + '/dev-scripts /home/' + DEVELOPER_USERNAME + "/dev-scripts"
+			' ln -s ' + GO_SRC_DIR + '/dev-scripts /home/' + DEVELOPER_USERNAME + "/dev-scripts"
   ############################ END - Symbol link projects to /home
+
+  ################## START: vm.provision shell has privileged permission
+  config.vm.provision "shell",
+      inline: "mv /tmp/config_devel.sh " + GO_SRC_DIR + '/dev-scripts/config_devel.sh'
+
+  config.vm.provision "shell",
+      inline: "mv /tmp/pull_secret.json " + GO_SRC_DIR + '/dev-scripts/pull_secret.json'
+  ################## END: vm.provision shell has privileged permission
+
+  config.vm.provision 'shell',
+		inline: 'sudo -u ' + DEVELOPER_USERNAME +
+			' cat /tmp/vars_devscripts >> /home/' + DEVELOPER_USERNAME + '/.bashrc'
+
+  config.vm.provision 'shell',
+		inline: 'sudo -u ' + DEVELOPER_USERNAME +
+			' echo export PATH=$PATH:/usr/local/bin/ >> /home/' + DEVELOPER_USERNAME + '/.bashrc'
 
   # Setting git configs
   config.vm.provision 'shell', inline: CMD_GIT_CONFIG_GLOBAL_USERNAME
@@ -187,6 +169,5 @@ Vagrant.configure(2) do |config|
   config.vm.provision 'shell', inline: 'echo ' + '==============================================================='
   config.vm.provision 'shell', inline: 'echo ' + 'ALL SET!'
   config.vm.provision 'shell', inline: 'echo ' + '- To login in the VM use: vagrant ssh ' + VM_NAME
-  config.vm.provision 'shell', inline: 'echo ' + '- fedpkg clone PACKAGE_NAME for cloning a package'
   config.vm.provision 'shell', inline: 'echo ' + '==============================================================='
 end
