@@ -40,7 +40,7 @@ and select `Copy login command`.
 Copy the string which starts with **sha256**, example: *sha256~jtjonmsjN30REvkhkCEaldsakermcereori* and paste into **config_devel.sh**.
 
 
-**4.** Now you are ready to run (dev-scripts)[run https://github.com/openshift-metal3/dev-scripts] project.
+**4.** Now you are ready to run [dev-scripts](run https://github.com/openshift-metal3/dev-scripts) project.
 ```
 $ vagrant up
 ```
