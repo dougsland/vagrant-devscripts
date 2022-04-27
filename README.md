@@ -8,8 +8,8 @@
 This project creates a virtual machine with all requirements, settings and repos to build [dev-scripts project](https://github.com/openshift-metal3/dev-scripts) (vms).
 
 - Helps isolate your development environment
+- Quick build environment via `vagrant up` command (no need to worry about packages, settings etc)
 - Easily adjustment requirements via `Vagrantfile`
-- Quick build environment via `vagrant up` command
 
 **Requirements for running the dev-scripts VMs**:
 
