@@ -30,11 +30,11 @@ sudo chmod 640 /etc/qemu/${USER}.conf
 $ git clone https://github.com/dougsland/vagrant-devscripts && cd vagrant-devscripts
 ```
 
-**2.** Download `pull-secret.json` file in current directory (from https://cloud.redhat.com/openshift/install/pull-secret)
+**2.** Download `pull-secret.json` file in current directory from https://cloud.redhat.com/openshift/install/pull-secret
 
 
 **3.** Get a login token from [console-openshift-console.apps.ci.l2s4.p1.openshiftapps.com](console-openshift-console.apps.ci.l2s4.p1.openshiftapps.com)
-- After logging into `console-openshift-console.apps.ci.l2s4.p1.openshiftapps.com` go to your Name on the top of right  
+- After logging into `console-openshift-console.apps.ci.l2s4.p1.openshiftapps.com` go to your name on the top of right
 and select `Copy login command`. Copy the string which starts with **sha256**, example: *sha256~jtjonmsjN30REvkhkCEaldsakermcereori* and paste  
 into **config_devel.sh**.
 
