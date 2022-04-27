@@ -41,8 +41,9 @@ and select `Copy login command`.
 
 Example:
 ```
-# You can get this token from https://console-openshift-console.apps.ci.l2s4.p1.openshiftapps.com/ by
-# clicking on your name in the top right corner and coping the login
+# You can get this token from:  
+# https://console-openshift-console.apps.ci.l2s4.p1.openshiftapps.com/
+# by clicking on your name in the top right corner and coping the login
 # command (the token is part of the command)
 set +x
 export CI_TOKEN='sha256-yuisdfgkjmnwqwert'
