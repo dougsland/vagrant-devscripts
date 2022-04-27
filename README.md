@@ -70,7 +70,12 @@ set -x
 $ vagrant up
 $ vagrant ssh devscripts-ongo
 $ sudo su devel
-$ cd /home/devel/dev-scripts
+$ cd /home/devel/
+
+$ ls
+baremetal-runtimecfg  dev-scripts  go  machine-config-operator 
+
+$ cd dev-scripts
 $ make all
 ```
 **NOTE**: devel user password is *vagrant* and [set here](https://github.com/dougsland/vagrant-devscripts/blob/3fd5750389a1e60300d3983f31cdff038822c6a9/Vagrantfile#L12) 
